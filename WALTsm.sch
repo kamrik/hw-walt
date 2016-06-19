@@ -30,6 +30,7 @@ LIBS:contrib
 LIBS:valves
 LIBS:walt_misc
 LIBS:teensy
+LIBS:WALTsm-cache
 EELAYER 25 0
 EELAYER END
 $Descr USLetter 11000 8500
@@ -101,23 +102,23 @@ GXY_PIN
 $Comp
 L Photodiode D?
 U 1 1 57646A24
-P 3900 3550
-F 0 "D?" H 3900 3650 50  0000 C CNN
-F 1 "Photodiode" H 3894 3421 50  0001 C CNN
-F 2 "" H 3900 3550 50  0000 C CNN
-F 3 "" H 3900 3550 50  0000 C CNN
-	1    3900 3550
+P 4400 3600
+F 0 "D?" H 4400 3700 50  0000 C CNN
+F 1 "Photodiode" H 4394 3471 50  0001 C CNN
+F 2 "" H 4400 3600 50  0000 C CNN
+F 3 "" H 4400 3600 50  0000 C CNN
+	1    4400 3600
 	0    1    1    0   
 $EndComp
 $Comp
 L GND #PWR?
 U 1 1 57646A4B
-P 3900 3850
-F 0 "#PWR?" H 3900 3600 50  0001 C CNN
-F 1 "GND" H 3900 3700 50  0000 C CNN
-F 2 "" H 3900 3850 50  0000 C CNN
-F 3 "" H 3900 3850 50  0000 C CNN
-	1    3900 3850
+P 4400 3900
+F 0 "#PWR?" H 4400 3650 50  0001 C CNN
+F 1 "GND" H 4400 3750 50  0000 C CNN
+F 2 "" H 4400 3900 50  0000 C CNN
+F 3 "" H 4400 3900 50  0000 C CNN
+	1    4400 3900
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -345,8 +346,6 @@ Wire Wire Line
 Wire Wire Line
 	4350 2500 3400 2500
 Wire Wire Line
-	4400 2600 3400 2600
-Wire Wire Line
 	4400 2700 3400 2700
 Wire Wire Line
 	4400 3000 3400 3000
@@ -355,11 +354,7 @@ Wire Wire Line
 Wire Wire Line
 	4400 3200 3400 3200
 Wire Wire Line
-	3900 3850 3900 3700
-Wire Wire Line
-	3900 3400 3900 3300
-Wire Wire Line
-	3900 3300 3400 3300
+	4400 3900 4400 3750
 Wire Wire Line
 	3400 1200 3200 1200
 Wire Wire Line
@@ -717,16 +712,10 @@ Text Label 1200 5500 0    60   ~ 0
 GPIO_A4
 Text Label 1200 5600 0    60   ~ 0
 GPIO_A3
-Text Label 4000 2600 0    60   ~ 0
-GPIO_A7
 Wire Wire Line
 	1300 3000 1900 3000
 Wire Wire Line
 	1300 3100 1900 3100
-Text Label 1300 3000 0    60   ~ 0
-DEBUG_LED1
-Text Label 1300 3100 0    60   ~ 0
-DEBUG_LED2
 Wire Wire Line
 	4400 2900 3400 2900
 Wire Wire Line
@@ -737,4 +726,107 @@ Text Label 3700 2900 0    60   ~ 0
 GPIO_A4
 Text Label 3700 3000 0    60   ~ 0
 GPIO_A3
+$Comp
+L BMI160 U?
+U 1 1 57660316
+P 7100 5300
+F 0 "U?" H 6750 5850 60  0000 C CNN
+F 1 "BMI160" H 6850 4650 60  0000 C CNN
+F 2 "" H 7100 5000 60  0000 C CNN
+F 3 "" H 7100 5000 60  0000 C CNN
+	1    7100 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5766097E
+P 6350 5950
+F 0 "#PWR?" H 6350 5700 50  0001 C CNN
+F 1 "GND" H 6350 5800 50  0000 C CNN
+F 2 "" H 6350 5950 50  0000 C CNN
+F 3 "" H 6350 5950 50  0000 C CNN
+	1    6350 5950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8300 5600 7800 5600
+Wire Wire Line
+	8300 5500 7800 5500
+Text Label 7900 5500 0    60   ~ 0
+BMI_INT1
+Text Label 7900 5600 0    60   ~ 0
+BMI_INT2
+Wire Wire Line
+	6500 5700 6350 5700
+Wire Wire Line
+	6350 5700 6350 5950
+Wire Wire Line
+	6350 5800 6500 5800
+Connection ~ 6350 5800
+$Comp
+L +3V3 #PWR?
+U 1 1 57660D68
+P 6350 4750
+F 0 "#PWR?" H 6350 4600 50  0001 C CNN
+F 1 "+3V3" H 6350 4890 50  0000 C CNN
+F 2 "" H 6350 4750 50  0000 C CNN
+F 3 "" H 6350 4750 50  0000 C CNN
+	1    6350 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6350 4750 6350 5000
+Wire Wire Line
+	6350 5000 6500 5000
+Wire Wire Line
+	6500 4900 6350 4900
+Connection ~ 6350 4900
+Wire Wire Line
+	6000 5100 6500 5100
+Text Label 6000 5100 0    60   ~ 0
+SPI_MOSI
+Wire Wire Line
+	6000 5200 6500 5200
+Wire Wire Line
+	6000 5300 6500 5300
+Text Label 6000 5200 0    60   ~ 0
+SPI_SCK
+Text Label 6000 5300 0    60   ~ 0
+SPI_MISO
+Wire Wire Line
+	6000 5400 6500 5400
+Text Label 6000 5400 0    60   ~ 0
+SPI_BMI_CSB
+Wire Wire Line
+	1300 3400 1900 3400
+Wire Wire Line
+	1300 3300 1900 3300
+Text Label 1300 3300 0    60   ~ 0
+SPI_MOSI
+Text Label 1300 3400 0    60   ~ 0
+SPI_MISO
+Wire Wire Line
+	1300 3200 1900 3200
+Text Label 1300 3200 0    60   ~ 0
+SPI_BMI_CSB
+Wire Wire Line
+	1300 2900 1900 2900
+Wire Wire Line
+	1300 2800 1900 2800
+Text Label 1300 3000 0    60   ~ 0
+BMI_INT1
+Text Label 1300 3100 0    60   ~ 0
+BMI_INT1
+Text Label 1300 2800 0    60   ~ 0
+DEBUG_LED1
+Text Label 1300 2900 0    60   ~ 0
+DEBUG_LED2
+Wire Wire Line
+	3400 3300 4400 3300
+Wire Wire Line
+	4400 3300 4400 3450
+Wire Wire Line
+	3900 3400 3400 3400
+Text Label 3550 3500 0    60   ~ 0
+SPI_SCK
 $EndSCHEMATC
