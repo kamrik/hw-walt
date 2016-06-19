@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source E:/WALT/hw-walt/WALTsm.sch)
-    (date "6/19/2016 3:23:18 PM")
+    (date "6/19/2016 3:26:08 PM")
     (tool "Eeschema 4.0.2-stable")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -132,11 +132,13 @@
       (tstamp 5766D3A4))
     (comp (ref P2)
       (value CONN_01X05)
+      (footprint Socket_Strips:Socket_Strip_Straight_1x05)
       (libsource (lib conn) (part CONN_01X05))
       (sheetpath (names /) (tstamps /))
       (tstamp 5766F709))
     (comp (ref P3)
       (value CONN_01X05)
+      (footprint Socket_Strips:Socket_Strip_Straight_1x05)
       (libsource (lib conn) (part CONN_01X05))
       (sheetpath (names /) (tstamps /))
       (tstamp 5766F78A)))
