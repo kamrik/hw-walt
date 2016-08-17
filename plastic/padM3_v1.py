@@ -1,24 +1,23 @@
-# This example is meant to be used from within the CadQuery module of FreeCAD.
-# From within FreeCAD, you can make changes to this script and then click
-# CadQuery > Execute Script, or you can press F2.
-# There are more examples in the Examples directory included with this module.
-# Ex026_Lego_Brick.py is highly recommended as a great example of what CadQuery
-# can do.
+# A plastic bracket that attaches to the bottom of the WALT PCB
 import cadquery
 from Helpers import show
 
-# The dimensions of the box. These can be modified rather than changing the
-# object's code directly.
+# All sizes are in millimeters
+# PCB dimensions
 length = 50.8
 width = 40.64
-thickness = 5
-tapper = 1.2
 
-brd = 6.3
-brd_front = 7.8
-
+# Extra margin on top of the PCB size
 margin = 1.6
 
+# Plastic part thickness
+thickness = 5
+
+# How much the tapping protrusion sticks out
+tapper = 2
+
+
+# Mounting hole are on the corners of a rectangle of this size
 mt_len = 43.18
 mt_width = 33.02
 
@@ -26,28 +25,32 @@ mt_width = 33.02
 result = cadquery.Workplane("XY"). \
     box(length + margin*2, width + margin*2, thickness)
 
-# Mounting holes
-result = result.faces("<Z").workplane(). \
-    rect(mt_len, mt_width,  forConstruction=True). \
-    vertices().cboreHole(3.2, 6., 3., depth=None, clean=True)
-        #hole(3.2)
-
-
+# Mounting holes - markers only for drilling
 result = result.faces(">Z").workplane(). \
-    rect(32, width - 2*brd).cutThruAll()
+    rect(mt_len, mt_width,  forConstruction=True). \
+    vertices().hole(1, depth=0.5)
 
+# Alternative mounting 
+# holes - fully printed
+# result = result.faces("<Z").workplane(). \
+#     rect(mt_len, mt_width,  forConstruction=True). \
+#     vertices().cboreHole(3.2, 6., 3., depth=None, clean=True)
 
+# The big rectangular cut in the middle
+border = 6.3
+result = result.faces(">Z").workplane(). \
+    rect(32, width - 2*border).cutThruAll()
+
+# Cut the front panel where audio connector is
+border_front = 11
 result = result.faces("-X").faces(">X").workplane(). \
-    rect(width - 2*brd_front, thickness).cutThruAll()
+    rect(width - 2*border_front, thickness).cutThruAll()
 
 
 # Tapper
 result = result.faces("<X").workplane().rect(7,thickness).extrude(tapper)
-result = result.faces("<X").edges("<Z").chamfer(tapper)
+result = result.faces("<X").edges("<Z").chamfer(1)
 #result = result.faces("<X").edges("|Z").chamfer(1)
-
-
-
 
 
 
