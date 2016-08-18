@@ -226,7 +226,7 @@ F 3 "" H 2750 6500 50  0000 C CNN
 $EndComp
 Text Label 4650 5600 0    60   ~ 0
 GZ_PIN
-Text Label 4550 5400 0    60   ~ 0
+Text Label 4550 5500 0    60   ~ 0
 GXY_PIN
 $Comp
 L GND #PWR09
@@ -530,7 +530,6 @@ GPIO_A3
 NoConn ~ 1900 2600
 NoConn ~ 3400 2600
 NoConn ~ 2850 5600
-NoConn ~ 4250 5500
 Wire Wire Line
 	1650 2100 1900 2100
 Wire Wire Line
@@ -581,7 +580,7 @@ Connection ~ 2750 6300
 Wire Wire Line
 	4950 5600 4250 5600
 Wire Wire Line
-	4950 5400 4250 5400
+	4950 5500 4250 5500
 Wire Wire Line
 	6000 2400 6000 2600
 Wire Wire Line
@@ -760,4 +759,5 @@ NoConn ~ 1900 2300
 NoConn ~ 1900 2200
 NoConn ~ 1900 2800
 NoConn ~ 3400 3400
+NoConn ~ 4250 5400
 $EndSCHEMATC
