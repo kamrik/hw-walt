@@ -6,4 +6,4 @@
 *.kicad_pcb-bak
 *autosave*
 *cache*
-gerbers
+fab
